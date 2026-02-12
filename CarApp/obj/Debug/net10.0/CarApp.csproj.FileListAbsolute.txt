@@ -1,0 +1,14 @@
+C:\Users\Andreas\source\repos\CarApp\CarApp\bin\Debug\net10.0\CarApp.exe
+C:\Users\Andreas\source\repos\CarApp\CarApp\bin\Debug\net10.0\CarApp.deps.json
+C:\Users\Andreas\source\repos\CarApp\CarApp\bin\Debug\net10.0\CarApp.runtimeconfig.json
+C:\Users\Andreas\source\repos\CarApp\CarApp\bin\Debug\net10.0\CarApp.dll
+C:\Users\Andreas\source\repos\CarApp\CarApp\bin\Debug\net10.0\CarApp.pdb
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.AssemblyInfoInputs.cache
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.AssemblyInfo.cs
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.csproj.CoreCompileInputs.cache
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.dll
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\refint\CarApp.dll
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.pdb
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\CarApp.genruntimeconfig.cache
+C:\Users\Andreas\source\repos\CarApp\CarApp\obj\Debug\net10.0\ref\CarApp.dll
