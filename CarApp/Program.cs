@@ -51,13 +51,27 @@
 
             Console.WriteLine(outputSentence);
 
-            ;
+            
 
             string tableBrand = carBrand.PadRight(15);
             string tableModel = modelType.PadRight(15);
+
+
+            string headerBrand = ("Car Brand");
+            string headerModel = ("Car Model");
             
 
-            Console.WriteLine(tableBrand + "|" + tableModel + "|" + originalMilage);
+            string tableHeaderBrand = headerBrand.PadRight(15);
+            string tableHeaderModel = headerModel.PadRight(15);
+           
+
+            Console.WriteLine($"{tableHeaderBrand} | {tableHeaderModel} | Original Milage");
+            Console.WriteLine("\n ------------------------------------- \n");
+            Console.WriteLine(tableBrand + "|" + tableModel + "|" + originalMilage + " km");
+
+            
+
+            
            
                   
         }
