@@ -45,9 +45,13 @@
             Console.WriteLine($"New milage after trip: {newMilage}");
             Console.WriteLine($"Trip cost with petrol: {tripCostPetrol}");
             Console.WriteLine($"Trip cost with diesel: {tripCostDiesel}");
+
+            string outputSentence = String.Format("Fuel expenses for {0} km er {1} kr with petrol and {2} kr for diesel", drivingDistance, tripCostPetrol, tripCostDiesel);
             
-          
-        
+
+            Console.WriteLine(outputSentence);
+           
+                  
         }
     }
 }
