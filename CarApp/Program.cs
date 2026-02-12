@@ -6,16 +6,16 @@
         {
 
 
-            /* Console.Write("Enter car brand: ");
-             string? carBrand = Console.ReadLine();
-             Console.Write("Enter car model: ");
-             string? modelType = Console.ReadLine();
-             Console.Write("Enter car year: ");
-             int year = Convert.ToInt32(Console.ReadLine());
-             Console.Write("Enter gear type: ");
-             char gearType = Console.ReadLine()[0];
+            Console.Write("Enter car brand: ");
+            string? carBrand = Console.ReadLine();
+            Console.Write("Enter car model: ");
+            string? modelType = Console.ReadLine();
+            //Console.Write("Enter car year: ");
+            //int year = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Enter gear type: ");
+            //char gearType = Console.ReadLine()[0];
 
-             Console.WriteLine();*/
+            //Console.WriteLine();
 
 
             Console.Write("Enter fuel type: ");
@@ -26,7 +26,7 @@
             double originalMilage = Convert.ToDouble(Console.ReadLine());
             Console.Write("Trip distance in kilometers: ");
             double drivingDistance = Convert.ToDouble(Console.ReadLine());
-                    
+
             double dieselPrice = 12.29;
             double petrolPrice = 13.49;
 
@@ -50,6 +50,14 @@
             
 
             Console.WriteLine(outputSentence);
+
+            ;
+
+            string tableBrand = carBrand.PadRight(15);
+            string tableModel = modelType.PadRight(15);
+            
+
+            Console.WriteLine(tableBrand + "|" + tableModel + "|" + originalMilage);
            
                   
         }
