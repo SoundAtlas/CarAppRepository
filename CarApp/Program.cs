@@ -22,11 +22,11 @@
             string? fuelType = Console.ReadLine();
             Console.Write("Enter km/l: ");
             double kmPerLiter = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Kilometers driven: ");
-            double milage = Convert.ToDouble(Console.ReadLine());
-
-            double drivingDistance = 43.5;
-
+            Console.Write("Total milage in km: ");
+            double originalMilage = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Trip distance in kilometers: ");
+            double drivingDistance = Convert.ToDouble(Console.ReadLine());
+                    
             double dieselPrice = 12.29;
             double petrolPrice = 13.49;
 
@@ -36,16 +36,18 @@
             double tripCostDiesel = fuelNeeded * dieselPrice;
             double tripCostPetrol = fuelNeeded * petrolPrice;
 
+            int newMilage = Convert.ToInt32(originalMilage + drivingDistance);
+
+
             Console.WriteLine($"Fuel type: {fuelType}");
             Console.WriteLine($"Km/l: {kmPerLiter}");
-            Console.WriteLine($"Kilometers driven: {milage}");
-            Console.WriteLine($"Trip cost using petrol {tripCostPetrol}");
-            Console.WriteLine($"Trip cost using petrol {tripCostDiesel}");
+            Console.WriteLine($"Original milage: {originalMilage}");
+            Console.WriteLine($"New milage after trip: {newMilage}");
+            Console.WriteLine($"Trip cost using petrol: {tripCostPetrol}");
+            Console.WriteLine($"Trip cost using diesel: {tripCostDiesel}");
             
           
-            
-
-
+        
         }
     }
 }
