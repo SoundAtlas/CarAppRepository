@@ -43,8 +43,8 @@
             Console.WriteLine($"Km/l: {kmPerLiter}");
             Console.WriteLine($"Original milage: {originalMilage}");
             Console.WriteLine($"New milage after trip: {newMilage}");
-            Console.WriteLine($"Trip cost using petrol: {tripCostPetrol}");
-            Console.WriteLine($"Trip cost using diesel: {tripCostDiesel}");
+            Console.WriteLine($"Trip cost with petrol: {tripCostPetrol}");
+            Console.WriteLine($"Trip cost with diesel: {tripCostDiesel}");
             
           
         
