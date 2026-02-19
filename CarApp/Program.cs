@@ -27,7 +27,7 @@
             Console.Write("Trip distance in kilometers: ");
             double drivingDistance = Convert.ToDouble(Console.ReadLine());
 
-            double dieselPrice = 10.00;
+            double dieselPrice = 11.00;
             double petrolPrice = 13.49;
 
             double fuelNeeded = drivingDistance / kmPerLiter;
