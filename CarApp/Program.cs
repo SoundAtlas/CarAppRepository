@@ -9,7 +9,9 @@
         static double kmPerLiter = 0;
         static int kilometerStand = 0;
         static bool isEngineOn = false;
-
+        static double dieselPrice = 11.00;
+        static double petrolPrice = 13.49;
+        static double distance = 0;
         static void Main(string[] args)
         {
             bool running = true;
@@ -22,6 +24,7 @@
                 Console.WriteLine("1. Read Car Details");
                 Console.WriteLine("2. Turn on engine");
                 Console.WriteLine("3. Simulate Trip");
+                Console.WriteLine("4. Calculate Trip Price");
                 Console.WriteLine("5. Print Car Details");
                 Console.WriteLine("7. Exit");
                 Console.WriteLine("\nSelect an option:");
@@ -47,6 +50,15 @@
                         Console.WriteLine("How many km do you want to drive? ");
                         double distance = Convert.ToDouble(Console.ReadLine());
                         Drive(distance);
+                        ReturnToMenu();
+                        break;
+                    case 4:
+                        Console.WriteLine("Trip distance in km?: ");
+                        double tripDistance = Convert.ToDouble(Console.ReadLine());
+                        
+                        double price = CalculateTripPrice(tripDistance);
+
+                        Console.WriteLine($"Trip price: {price:F2} DKK");
                         ReturnToMenu();
                         break;
                     case 5:
@@ -165,7 +177,7 @@
         static void ReturnToMenu()
         {
             Console.Write("\nPress any key to return to menu...");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
 
@@ -193,11 +205,46 @@
 
 
 
-       /* static double CalculateTripPrice(double distance, double literPrice, string fuelType)
+        static double CalculateTripPrice(double distance)
         {
 
+            if (kmPerLiter == 0)
+            {
+                Console.WriteLine("Error: type car details first (menu 1).");
+                return -1;
+            }
 
+            // 2) Tjek distance
+            if (distance <= 0)
+            {
+                Console.WriteLine("Error: distance must be greater than 0.");
+                return -1;
+            }
 
-        }*/
+            // 3) Find literpris ud fra fuelType (ignorerer literPrice input)
+            string ft = fuelType.ToLower();
+
+            double chosenLiterPrice;
+
+            if (ft == "diesel")
+                chosenLiterPrice = dieselPrice;
+            else if (ft == "petrol" || ft == "benzin")
+                chosenLiterPrice = petrolPrice;
+            
+            else
+            {
+                Console.WriteLine("Fejl: Fuel type must be 'petrol' or 'diesel' (or 'benzin').");
+                return -1;
+            }
+
+            // 4) Beregn liter og pris
+            double litersUsed = distance / kmPerLiter;
+            //double totalPrice = litersUsed * chosenLiterPrice;
+
+            return litersUsed * chosenLiterPrice;
+        }
+
     }
+    
+
 }
