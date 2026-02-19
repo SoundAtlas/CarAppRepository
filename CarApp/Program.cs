@@ -11,7 +11,20 @@
         static bool isEngineOn = false;
         static double dieselPrice = 11.00;
         static double petrolPrice = 13.49;
-        static double distance = 0;
+
+
+
+
+        static string andreasBrand = "Mazda";
+        static string andreasModel = "3";
+        static int andreasYear = 2019;
+        static string andreasFt = "Diesel";
+
+        static string fioziBrand = "Toyota";
+        static string fioziModel = "BZ4x";
+        static int fioziYear = 2026;
+        static string fioziFt = "Electric";
+        
         static void Main(string[] args)
         {
             bool running = true;
@@ -26,7 +39,9 @@
                 Console.WriteLine("3. Simulate Trip");
                 Console.WriteLine("4. Calculate Trip Price");
                 Console.WriteLine("5. Print Car Details");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("6. IsPalindrome?");
+                Console.WriteLine("7. Print All Team Cars");
+                Console.WriteLine("8. Exit");
                 Console.WriteLine("\nSelect an option:");
                 Console.Write("> ");
 
@@ -65,14 +80,26 @@
                         PrintCarDetails();
                         ReturnToMenu();
                         break;
+                    case 6:
+                        bool result = IsPalindrome(kilometerStand);
+                        if (result)
+                            Console.WriteLine($"Your cars milage ({kilometerStand}) is a palindrome");
+                        else
+                            Console.WriteLine($"Your cars milage ({kilometerStand}) is NOT a palindrome");
+                        ReturnToMenu();
+                        break;
                     case 7:
-                        running = false;
-                        Console.WriteLine("Exiting the application...");
-                        break;
-                    default:
-                        Console.WriteLine("Invalid option. Please try again.");
-                        break;
-                }
+                                PrintAllTeamCars();
+                                ReturnToMenu();
+                                break;
+                            case 8:
+                                running = false;
+                                Console.WriteLine("Exiting the application...");
+                                break;
+                            default:
+                                Console.WriteLine("Invalid option. Please try again.");
+                                break;
+                            }
 
             }
             /* Console.Write("Enter car brand: ");
@@ -244,7 +271,45 @@
             return litersUsed * chosenLiterPrice;
         }
 
-    }
+        static void PrintAllTeamCars()
+        {
+            Console.WriteLine("\n=== TEAM CARS ===");
+
+            for (int i = 1; i <= 2; i++)
+            {
+                if (i == 1)
+                    Console.WriteLine($"\nANDREAS\nBrand & Model: {andreasBrand} {andreasModel}\nYEAR: {andreasYear}\nFUEL TYPE: {andreasFt}");
+
+                else if (i == 2)
+                    Console.WriteLine($"\nFIOZI\nBrand & Model: {fioziBrand} {fioziModel}\nYEAR: {fioziYear}\nFUEL TYPE: {fioziFt}");
+            }   
+        }
+
+        static bool IsPalindrome(int km)
+        {
+            string text = km.ToString();
+
+            int left = 0;
+            int right = text.Length - 1;
+
+            while (left < right)
+            {
+                if (text[left] != text[right])
+                    return false;
+
+                left++;
+                right--;
+            }
+
+            return true;
+
+
+        }
+
+
+        
+
+    }   
     
 
 }
