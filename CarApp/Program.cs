@@ -89,17 +89,17 @@
                         ReturnToMenu();
                         break;
                     case 7:
-                                PrintAllTeamCars();
-                                ReturnToMenu();
-                                break;
-                            case 8:
-                                running = false;
-                                Console.WriteLine("Exiting the application...");
-                                break;
-                            default:
-                                Console.WriteLine("Invalid option. Please try again.");
-                                break;
-                            }
+                        PrintAllTeamCars();
+                        ReturnToMenu();
+                        break;
+                    case 8:
+                        running = false;
+                        Console.WriteLine("Exiting the application...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }
 
             }
             /* Console.Write("Enter car brand: ");
