@@ -11,6 +11,7 @@
             Car carFiozi = new Car("Toyota", "BZ4x", 2026, "EL", "A", 200000, false, 15);
 
 
+
             bool running = true;
 
             while (running)
@@ -19,18 +20,20 @@
                 Console.Clear();
                 Console.WriteLine("=== CAR APP ===");
                 Console.WriteLine("1. Read Car Details");
-                Console.WriteLine("2. Turn on engine");
+                Console.WriteLine("2. Toggle engine ON/OFF");
                 Console.WriteLine("3. Simulate Trip");
                 Console.WriteLine("4. Calculate Trip Price");
                 Console.WriteLine("5. Print Car Details");
                 Console.WriteLine("6. IsPalindrome?");
                 Console.WriteLine("7. Print All Team Cars");
                 Console.WriteLine("8. Exit");
-                Console.Write("\nSelect an option:\n> ");
+
 
                 // Læser brugerinput og konverterer det til et heltal
-                string? userInput = Console.ReadLine();
-                int choice = Convert.ToInt32(userInput);
+                //string? userInput = Console.ReadLine();
+
+
+                int choice = ReadInt("\nSelect an option:\n> ", 1, 8);
 
                 // Tager brugerens valg og udfører den tilsvarende handling
                 switch (choice)
@@ -40,7 +43,7 @@
                         ReturnToMenu();
                         break;
                     case 2:
-                        car1.TurnEngineOn();
+                        car1.ToggleEngine();
                         ReturnToMenu();
                         break;
                     case 3:
@@ -92,6 +95,7 @@
         }
 
 
+
         static bool IsPalindrome(double km)
         {
             string text = km.ToString();
@@ -121,6 +125,19 @@
         }
 
 
+        static int ReadInt(string message, int min, int max)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                if (int.TryParse(Console.ReadLine(), out int choice) &&
+                    choice >= min &&
+                    choice <= max)
+                    return choice;
+
+                Console.WriteLine($"Invalid choice. Please enter a whole number between {min} and {max}");
+            }
+        }
 
     }
 
