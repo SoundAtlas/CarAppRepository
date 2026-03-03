@@ -7,7 +7,7 @@
         static int carYear = 0;
         static string fuelType = "";
         static double kmPerLiter = 0;
-        static int kilometerStand = 0;
+        static int odometer = 0;
         static bool isEngineOn = false;
         static double dieselPrice = 11.00;
         static double petrolPrice = 13.49;
@@ -57,8 +57,7 @@
                         ReturnToMenu();
                         break;
                     case 2:
-                        isEngineOn = true;
-                        Console.WriteLine("\nEngine is now ON.");
+                        TurnEngineOn();
                         ReturnToMenu();
                         break;
                     case 3:
@@ -81,11 +80,11 @@
                         ReturnToMenu();
                         break;
                     case 6:
-                        bool result = IsPalindrome(kilometerStand);
+                        bool result = IsPalindrome(odometer);
                         if (result)
-                            Console.WriteLine($"Your cars milage ({kilometerStand}) is a palindrome");
+                            Console.WriteLine($"Your cars milage ({odometer}) is a palindrome");
                         else
-                            Console.WriteLine($"Your cars milage ({kilometerStand}) is NOT a palindrome");
+                            Console.WriteLine($"Your cars milage ({odometer}) is NOT a palindrome");
                         ReturnToMenu();
                         break;
                     case 7:
@@ -119,8 +118,8 @@
             fuelType = Console.ReadLine();
             Console.Write("Km/l: ");
             kmPerLiter = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Kilometerstand: ");
-            kilometerStand = Convert.ToInt32(Console.ReadLine());
+            Console.Write("odometer: ");
+            odometer = Convert.ToInt32(Console.ReadLine());
         }
 
 
@@ -133,7 +132,7 @@
             Console.WriteLine($"Year: {carYear}");
             Console.WriteLine($"Fuel Type: {fuelType}");
             Console.WriteLine($"Km/l: {kmPerLiter}");
-            Console.WriteLine($"Original Milage: {kilometerStand} km");
+            Console.WriteLine($"Original Milage: {odometer} km");
         }
 
         // Metode til at vente på brugerinput
@@ -159,10 +158,10 @@
                 return;
             }
 
-            kilometerStand = kilometerStand + (int)distance;
+            odometer = odometer + (int)distance;
 
             Console.WriteLine($"You drove {distance} km.");
-            Console.WriteLine($"Total milage is now {kilometerStand}");
+            Console.WriteLine($"Total milage is now {odometer}");
 
         }
 
@@ -242,8 +241,11 @@
 
         }
 
-
-
+        static void TurnEngineOn()
+        {
+            isEngineOn = true;
+            Console.WriteLine("\nEngine is now ON.");
+        }
 
     }
 
