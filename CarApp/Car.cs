@@ -15,7 +15,7 @@ public class Car
     private const double _petrolPrice = 13.49;
 
 
-
+    //Properties
     public string CarBrand
     {
         get { return _carBrand; }
