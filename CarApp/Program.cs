@@ -24,7 +24,7 @@
         static string fioziModel = "BZ4x";
         static int fioziYear = 2026;
         static string fioziFt = "Electric";
-        
+
         static void Main(string[] args)
         {
             bool running = true;
@@ -70,7 +70,7 @@
                     case 4:
                         Console.WriteLine("Trip distance in km?: ");
                         double tripDistance = Convert.ToDouble(Console.ReadLine());
-                        
+
                         double price = CalculateTripPrice(tripDistance);
 
                         Console.WriteLine($"Trip price: {price:F2} DKK");
@@ -102,70 +102,6 @@
                 }
 
             }
-            /* Console.Write("Enter car brand: ");
-             string? carBrand = Console.ReadLine();
-             Console.Write("Enter car model: ");
-             string? modelType = Console.ReadLine();
-             Console.Write("Enter car year: ");
-             int year = Convert.ToInt32(Console.ReadLine());
-             Console.Write("Enter gear type: ");
-             char gearType = Console.ReadLine()[0];
-
-             Console.WriteLine();
-
-
-             Console.Write("Enter fuel type: ");
-             string? fuelType = Console.ReadLine();
-             Console.Write("Enter km/l: ");
-             double kmPerLiter = Convert.ToDouble(Console.ReadLine());
-             Console.Write("Total milage in km: ");
-             double originalMilage = Convert.ToDouble(Console.ReadLine());
-             Console.Write("Trip distance in kilometers: ");
-             double drivingDistance = Convert.ToDouble(Console.ReadLine());
-
-             double dieselPrice = 11.00;
-             double petrolPrice = 13.49;
-
-             double fuelNeeded = drivingDistance / kmPerLiter;
-
-
-             double tripCostDiesel = fuelNeeded * dieselPrice;
-             double tripCostPetrol = fuelNeeded * petrolPrice;
-
-             int newMilage = Convert.ToInt32(originalMilage + drivingDistance);
-
-
-             Console.WriteLine($"Fuel type: {fuelType}");
-             Console.WriteLine($"Km/l: {kmPerLiter}");
-             Console.WriteLine($"Original milage: {originalMilage}");
-             Console.WriteLine($"New milage after trip: {newMilage}");
-             Console.WriteLine($"Trip cost with petrol: {tripCostPetrol}");
-             Console.WriteLine($"Trip cost with diesel: {tripCostDiesel}");
-
-             string outputSentence = String.Format("Fuel expenses for {0} km er {1} kr with petrol and {2} kr for diesel", drivingDistance, tripCostPetrol, tripCostDiesel);
-
-
-             Console.WriteLine(outputSentence);*/
-
-
-
-            /* string tableBrand = carBrand.PadRight(15);
-             string tableModel = modelType.PadRight(15);
-
-
-             string headerBrand = ("Car Brand");
-             string headerModel = ("Car Model");
-
-
-             string tableHeaderBrand = headerBrand.PadRight(15);
-             string tableHeaderModel = headerModel.PadRight(15);
-
-
-             Console.WriteLine($"{tableHeaderBrand} | {tableHeaderModel} | Original Milage");
-             Console.WriteLine("\n ------------------------------------- \n");
-             Console.WriteLine(tableBrand + "|" + tableModel + "|" + originalMilage + " km");*/
-
-
 
 
         }
@@ -257,7 +193,7 @@
                 chosenLiterPrice = dieselPrice;
             else if (ft == "petrol" || ft == "benzin")
                 chosenLiterPrice = petrolPrice;
-            
+
             else
             {
                 Console.WriteLine("Fejl: Fuel type must be 'petrol' or 'diesel' (or 'benzin').");
@@ -282,7 +218,7 @@
 
                 else if (i == 2)
                     Console.WriteLine($"\nFIOZI\nBrand & Model: {fioziBrand} {fioziModel}\nYEAR: {fioziYear}\nFUEL TYPE: {fioziFt}");
-            }   
+            }
         }
 
         static bool IsPalindrome(int km)
@@ -307,9 +243,9 @@
         }
 
 
-        
 
-    }   
-    
+
+    }
+
 
 }
