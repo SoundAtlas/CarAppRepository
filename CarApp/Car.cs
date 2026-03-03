@@ -11,11 +11,10 @@ public class Car
     private bool _isEngineOn;
     private double _kmPerLiter;
 
-    private const double dieselPrice = 11.00;
-    private const double petrolPrice = 13.49;
+    private const double _dieselPrice = 11.00;
+    private const double _petrolPrice = 13.49;
 
 
-    //properties
 
     public string CarBrand
     {
@@ -62,14 +61,14 @@ public class Car
         CarBrand = Console.ReadLine();
         Console.Write("Model: ");
         CarModel = Console.ReadLine();
-        Console.Write("Year: ");
-        CarYear = Convert.ToInt32(Console.ReadLine());
+
+        CarYear = ReadInt("Year: ");
+
         Console.Write("Fuel Type: ");
         FuelType = Console.ReadLine();
-        Console.Write("Km/l: ");
-        KmPerLiter = Convert.ToDouble(Console.ReadLine());
-        Console.Write("odometer: ");
-        Odometer = Convert.ToInt32(Console.ReadLine());
+
+        KmPerLiter = ReadDouble("Km/l: ");
+        Odometer = ReadDouble("Original Milage: ");
     }
 
 
@@ -132,9 +131,9 @@ public class Car
         double chosenLiterPrice;
 
         if (ft == "diesel")
-            chosenLiterPrice = dieselPrice;
+            chosenLiterPrice = _dieselPrice;
         else if (ft == "petrol" || ft == "benzin")
-            chosenLiterPrice = petrolPrice;
+            chosenLiterPrice = _petrolPrice;
 
         else
         {
@@ -151,17 +150,39 @@ public class Car
 
     public void PrintAllTeamCars()
     {
-        Console.WriteLine("\n=== TEAM CARS ===");
-
-        for (int i = 1; i <= 2; i++)
-        {
-            if (i == 1)
-                Console.WriteLine($"\nANDREAS\nBrand & Model: {andreasBrand} {andreasModel}\nYEAR: {andreasYear}\nFUEL TYPE: {andreasFt}");
-
-            else if (i == 2)
-                Console.WriteLine($"\nFIOZI\nBrand & Model: {fioziBrand} {fioziModel}\nYEAR: {fioziYear}\nFUEL TYPE: {fioziFt}");
-        }
+        Console.WriteLine($"Brand & Model: {CarBrand} {CarModel}\nYEAR: {CarYear}\nFUEL TYPE: {FuelType}");
     }
 
+    public void TurnEngineOn()
+    {
+        IsEngineOn = true;
+        Console.WriteLine("\nEngine is now ON.");
+    }
+
+
+    //helper method to read user choice and validate it as an integer
+    public int ReadInt(string message)
+    {
+        while (true)
+        {
+            Console.Write(message);
+            if (int.TryParse(Console.ReadLine(), out int choice))
+                return choice;
+
+            Console.WriteLine("Invalid choice. Please enter a whole number");
+        }
+    }
+    public double ReadDouble(string message)
+    {
+        while (true)
+        {
+            Console.Write(message);
+            if (double.TryParse(Console.ReadLine(), out double choice))
+                return choice;
+
+            Console.WriteLine("Invalid choice. Please enter a number");
+        }
+
+    }
 
 }
