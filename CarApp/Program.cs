@@ -27,6 +27,7 @@
 
         static void Main(string[] args)
         {
+            Car car1 = new Car("", "", 0, "", "", 0, false, 0);
             bool running = true;
 
             while (running)
@@ -53,7 +54,7 @@
                 switch (choice)
                 {
                     case 1:
-                        ReadCarDetails();
+                        car1.ReadCarDetails();
                         ReturnToMenu();
                         break;
                     case 2:
@@ -76,7 +77,7 @@
                         ReturnToMenu();
                         break;
                     case 5:
-                        PrintCarDetails();
+                        car1.PrintCarDetails();
                         ReturnToMenu();
                         break;
                     case 6:
@@ -104,121 +105,122 @@
 
 
         }
-
-        // Metode til at læse bilens detaljer fra brugeren
-        static void ReadCarDetails()
-        {
-            Console.Write("Brand: ");
-            carBrand = Console.ReadLine();
-            Console.Write("Model: ");
-            carModel = Console.ReadLine();
-            Console.Write("Year: ");
-            carYear = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Fuel Type: ");
-            fuelType = Console.ReadLine();
-            Console.Write("Km/l: ");
-            kmPerLiter = Convert.ToDouble(Console.ReadLine());
-            Console.Write("odometer: ");
-            odometer = Convert.ToInt32(Console.ReadLine());
-        }
-
-
-        // Metode til at udskrive bilens detaljer
-        static void PrintCarDetails()
-        {
-            Console.WriteLine("\n=== CAR INFO ===");
-            Console.WriteLine($"Brand: {carBrand}");
-            Console.WriteLine($"Model: {carModel}");
-            Console.WriteLine($"Year: {carYear}");
-            Console.WriteLine($"Fuel Type: {fuelType}");
-            Console.WriteLine($"Km/l: {kmPerLiter}");
-            Console.WriteLine($"Original Milage: {odometer} km");
-        }
-
-        // Metode til at vente på brugerinput
-        static void ReturnToMenu()
-        {
-            Console.Write("\nPress any key to return to menu...");
-            Console.ReadKey();
-        }
+        /*
+                // Metode til at læse bilens detaljer fra brugeren
+                static void ReadCarDetails()
+                {
+                    Console.Write("Brand: ");
+                    carBrand = Console.ReadLine();
+                    Console.Write("Model: ");
+                    carModel = Console.ReadLine();
+                    Console.Write("Year: ");
+                    carYear = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Fuel Type: ");
+                    fuelType = Console.ReadLine();
+                    Console.Write("Km/l: ");
+                    kmPerLiter = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("odometer: ");
+                    odometer = Convert.ToInt32(Console.ReadLine());
+                }
 
 
-        // Metode til at simulere en køretur
-        static void Drive(double distance)
-        {
-            if (isEngineOn == false)
-            {
-                Console.WriteLine("You need to start the engine first!");
-                return;
-            }
-
-            if (distance <= 0)
-            {
-                Console.WriteLine("Distance must be greater than 0!");
-                return;
-            }
-
-            odometer = odometer + (int)distance;
-
-            Console.WriteLine($"You drove {distance} km.");
-            Console.WriteLine($"Total milage is now {odometer}");
-
-        }
+                // Metode til at udskrive bilens detaljer
+                static void PrintCarDetails()
+                {
+                    Console.WriteLine("\n=== CAR INFO ===");
+                    Console.WriteLine($"Brand: {carBrand}");
+                    Console.WriteLine($"Model: {carModel}");
+                    Console.WriteLine($"Year: {carYear}");
+                    Console.WriteLine($"Fuel Type: {fuelType}");
+                    Console.WriteLine($"Km/l: {kmPerLiter}");
+                    Console.WriteLine($"Original Milage: {odometer} km");
+                }
 
 
 
-        static double CalculateTripPrice(double distance)
-        {
+                // Metode til at simulere en køretur
+                static void Drive(double distance)
+                {
+                    if (isEngineOn == false)
+                    {
+                        Console.WriteLine("You need to start the engine first!");
+                        return;
+                    }
 
-            if (kmPerLiter == 0)
-            {
-                Console.WriteLine("Error: type car details first (menu 1).");
-                return -1;
-            }
+                    if (distance <= 0)
+                    {
+                        Console.WriteLine("Distance must be greater than 0!");
+                        return;
+                    }
 
-            // 2) Tjek distance
-            if (distance <= 0)
-            {
-                Console.WriteLine("Error: distance must be greater than 0.");
-                return -1;
-            }
+                    odometer = odometer + (int)distance;
 
-            // 3) Find literpris ud fra fuelType (ignorerer literPrice input)
-            string ft = fuelType.ToLower();
+                    Console.WriteLine($"You drove {distance} km.");
+                    Console.WriteLine($"Total milage is now {odometer}");
 
-            double chosenLiterPrice;
+                }
 
-            if (ft == "diesel")
-                chosenLiterPrice = dieselPrice;
-            else if (ft == "petrol" || ft == "benzin")
-                chosenLiterPrice = petrolPrice;
 
-            else
-            {
-                Console.WriteLine("Fejl: Fuel type must be 'petrol' or 'diesel' (or 'benzin').");
-                return -1;
-            }
 
-            // 4) Beregn liter og pris
-            double litersUsed = distance / kmPerLiter;
-            //double totalPrice = litersUsed * chosenLiterPrice;
+                static double CalculateTripPrice(double distance)
+                {
 
-            return litersUsed * chosenLiterPrice;
-        }
+                    if (kmPerLiter == 0)
+                    {
+                        Console.WriteLine("Error: type car details first (menu 1).");
+                        return -1;
+                    }
 
-        static void PrintAllTeamCars()
-        {
-            Console.WriteLine("\n=== TEAM CARS ===");
+                    // 2) Tjek distance
+                    if (distance <= 0)
+                    {
+                        Console.WriteLine("Error: distance must be greater than 0.");
+                        return -1;
+                    }
 
-            for (int i = 1; i <= 2; i++)
-            {
-                if (i == 1)
-                    Console.WriteLine($"\nANDREAS\nBrand & Model: {andreasBrand} {andreasModel}\nYEAR: {andreasYear}\nFUEL TYPE: {andreasFt}");
+                    // 3) Find literpris ud fra fuelType (ignorerer literPrice input)
+                    string ft = fuelType.ToLower();
 
-                else if (i == 2)
-                    Console.WriteLine($"\nFIOZI\nBrand & Model: {fioziBrand} {fioziModel}\nYEAR: {fioziYear}\nFUEL TYPE: {fioziFt}");
-            }
-        }
+                    double chosenLiterPrice;
+
+                    if (ft == "diesel")
+                        chosenLiterPrice = dieselPrice;
+                    else if (ft == "petrol" || ft == "benzin")
+                        chosenLiterPrice = petrolPrice;
+
+                    else
+                    {
+                        Console.WriteLine("Fejl: Fuel type must be 'petrol' or 'diesel' (or 'benzin').");
+                        return -1;
+                    }
+
+                    // 4) Beregn liter og pris
+                    double litersUsed = distance / kmPerLiter;
+                    //double totalPrice = litersUsed * chosenLiterPrice;
+
+                    return litersUsed * chosenLiterPrice;
+                }
+
+                static void PrintAllTeamCars()
+                {
+                    Console.WriteLine("\n=== TEAM CARS ===");
+
+                    for (int i = 1; i <= 2; i++)
+                    {
+                        if (i == 1)
+                            Console.WriteLine($"\nANDREAS\nBrand & Model: {andreasBrand} {andreasModel}\nYEAR: {andreasYear}\nFUEL TYPE: {andreasFt}");
+
+                        else if (i == 2)
+                            Console.WriteLine($"\nFIOZI\nBrand & Model: {fioziBrand} {fioziModel}\nYEAR: {fioziYear}\nFUEL TYPE: {fioziFt}");
+                    }
+                }
+
+
+                static void TurnEngineOn()
+                {
+                    isEngineOn = true;
+                    Console.WriteLine("\nEngine is now ON.");
+                }*/
 
         static bool IsPalindrome(int km)
         {
@@ -241,12 +243,12 @@
 
         }
 
-        static void TurnEngineOn()
+        // Metode til at vente på brugerinput
+        static void ReturnToMenu()
         {
-            isEngineOn = true;
-            Console.WriteLine("\nEngine is now ON.");
+            Console.Write("\nPress any key to return to menu...");
+            Console.ReadKey();
         }
-
     }
 
 
