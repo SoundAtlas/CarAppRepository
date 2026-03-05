@@ -5,10 +5,10 @@
 
         static void Main(string[] args)
         {
-            Car car1 = new Car("", "", 0, "", "", 0, false, 0);
+            Car car1 = new Car("", "", 0, FuelType.electric, "", 0, false, 0);
 
-            Car carAndreas = new Car("Mazda", "3", 2019, "Diesel", "A", 64000, false, 19);
-            Car carFiozi = new Car("Toyota", "BZ4x", 2026, "EL", "A", 200000, false, 15);
+            Car carAndreas = new Car("Mazda", "3", 2019, FuelType.diesel, "A", 64000, false, 19);
+            Car carFiozi = new Car("Toyota", "BZ4x", 2026, FuelType.electric, "A", 200000, false, 15);
 
 
 
