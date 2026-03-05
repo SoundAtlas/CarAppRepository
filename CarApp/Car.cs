@@ -1,7 +1,7 @@
+using System.Drawing;
+
 namespace CarApp
 {
-
-
     public class Car
     {
 
@@ -30,7 +30,7 @@ namespace CarApp
 
         public int CarYear { get => _carYear; set => _carYear = value; }
 
-        public string FuelType { get => _fuelType; set => _fuelType = value; }
+        public FuelType FuelType { get; private set; }
 
         public string GearType { get => _gearType; set => _gearType = value; }
 
@@ -43,7 +43,7 @@ namespace CarApp
 
         //constructors
 
-        public Car(string carBrand, string carModel, int carYear, string fuelType, string gearType, double odometer, bool isEngineOn, double kmPrLiter)
+        public Car(string carBrand, string carModel, int carYear, FuelType fuelType, string gearType, double odometer, bool isEngineOn, double kmPrLiter)
         {
             CarBrand = carBrand;
             CarModel = carModel;
@@ -69,8 +69,10 @@ namespace CarApp
             CarYear = ReadIntWithinRange("Year: ", 1930, 2026);
 
             Console.Write("Fuel Type: ");
-            FuelType = Console.ReadLine();
+            string input = Console.ReadLine();
 
+            FuelType selectedFuel = (FuelType)Enum.Parse(typeof(FuelType), input);
+           
             KmPerLiter = ReadDoubleNonNegative("Km/l: ");
             Odometer = ReadDoubleNonNegative("Odometer: ");
         }
@@ -130,7 +132,7 @@ namespace CarApp
             }
 
             // 3) Find literpris ud fra fuelType (ignorerer literPrice input)
-            string ft = FuelType.ToLower();
+            string ft = FuelType.ToString().ToLower();
 
             double chosenLiterPrice;
 
