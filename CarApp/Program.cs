@@ -2,78 +2,144 @@
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
+            Car car1 = new Car("", "", 0, "", "", 0, false, 0);
+
+            Car carAndreas = new Car("Mazda", "3", 2019, "Diesel", "A", 64000, false, 19);
+            Car carFiozi = new Car("Toyota", "BZ4x", 2026, "EL", "A", 200000, false, 15);
 
 
-            Console.Write("Enter car brand: ");
-            string? carBrand = Console.ReadLine();
-            Console.Write("Enter car model: ");
-            string? modelType = Console.ReadLine();
-            //Console.Write("Enter car year: ");
-            //int year = Convert.ToInt32(Console.ReadLine());
-            //Console.Write("Enter gear type: ");
-            //char gearType = Console.ReadLine()[0];
 
-            //Console.WriteLine();
+            bool running = true;
 
-
-            Console.Write("Enter fuel type: ");
-            string? fuelType = Console.ReadLine();
-            Console.Write("Enter km/l: ");
-            double kmPerLiter = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Total milage in km: ");
-            double originalMilage = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Trip distance in kilometers: ");
-            double drivingDistance = Convert.ToDouble(Console.ReadLine());
-
-            double dieselPrice = 11.00;
-            double petrolPrice = 13.49;
-
-            double fuelNeeded = drivingDistance / kmPerLiter;
+            while (running)
+            {
+                //Main menu
+                Console.Clear();
+                Console.WriteLine("=== CAR APP ===");
+                Console.WriteLine("1. Read Car Details");
+                Console.WriteLine("2. Toggle engine ON/OFF");
+                Console.WriteLine("3. Simulate Trip");
+                Console.WriteLine("4. Calculate Trip Price");
+                Console.WriteLine("5. Print Car Details");
+                Console.WriteLine("6. IsPalindrome?");
+                Console.WriteLine("7. Print All Team Cars");
+                Console.WriteLine("8. Exit");
 
 
-            double tripCostDiesel = fuelNeeded * dieselPrice;
-            double tripCostPetrol = fuelNeeded * petrolPrice;
-
-            int newMilage = Convert.ToInt32(originalMilage + drivingDistance);
+                // Læser brugerinput og konverterer det til et heltal
+                //string? userInput = Console.ReadLine();
 
 
-            Console.WriteLine($"Fuel type: {fuelType}");
-            Console.WriteLine($"Km/l: {kmPerLiter}");
-            Console.WriteLine($"Original milage: {originalMilage}");
-            Console.WriteLine($"New milage after trip: {newMilage}");
-            Console.WriteLine($"Trip cost with petrol: {tripCostPetrol}");
-            Console.WriteLine($"Trip cost with diesel: {tripCostDiesel}");
+                int choice = ReadInt("\nSelect an option:\n> ", 1, 8);
 
-            string outputSentence = String.Format("Fuel expenses for {0} km er {1} kr with petrol and {2} kr for diesel", drivingDistance, tripCostPetrol, tripCostDiesel);
-            
+                // Tager brugerens valg og udfører den tilsvarende handling
+                switch (choice)
+                {
+                    case 1:
+                        car1.ReadCarDetails();
+                        ReturnToMenu();
+                        break;
+                    case 2:
+                        car1.ToggleEngine();
+                        ReturnToMenu();
+                        break;
+                    case 3:
+                        Console.WriteLine("How many km do you want to drive? ");
+                        double distance = Convert.ToDouble(Console.ReadLine());
+                        car1.Drive(distance);
+                        ReturnToMenu();
+                        break;
+                    case 4:
+                        Console.WriteLine("Trip distance in km?: ");
+                        double tripDistance = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine(outputSentence);
+                        double price = car1.CalculateTripPrice(tripDistance);
 
-            
+                        Console.WriteLine($"Trip price: {price:F2} DKK");
+                        ReturnToMenu();
+                        break;
+                    case 5:
+                        car1.PrintCarDetails();
+                        ReturnToMenu();
+                        break;
+                    case 6:
+                        bool result = IsPalindrome(car1.Odometer);
+                        if (result)
+                            Console.WriteLine($"Your cars milage ({car1.Odometer}) is a palindrome");
+                        else
+                            Console.WriteLine($"Your cars milage ({car1.Odometer}) is NOT a palindrome");
+                        ReturnToMenu();
+                        break;
+                    case 7:
+                        Console.WriteLine("\n=== TEAM CARS ===");
+                        Console.WriteLine("\nANDREAS");
+                        carAndreas.PrintAllTeamCars();
+                        Console.WriteLine("\nFIOZI");
+                        carFiozi.PrintAllTeamCars();
+                        ReturnToMenu();
+                        break;
+                    case 8:
+                        running = false;
+                        Console.WriteLine("Exiting the application...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }
 
-            string tableBrand = carBrand.PadRight(15);
-            string tableModel = modelType.PadRight(15);
+            }
 
-
-            string headerBrand = ("Car Brand");
-            string headerModel = ("Car Model");
-            
-
-            string tableHeaderBrand = headerBrand.PadRight(15);
-            string tableHeaderModel = headerModel.PadRight(15);
-           
-
-            Console.WriteLine($"{tableHeaderBrand} | {tableHeaderModel} | Original Milage");
-            Console.WriteLine("\n ------------------------------------- \n");
-            Console.WriteLine(tableBrand + "|" + tableModel + "|" + originalMilage + " km");
-
-            
-
-
-           
-                  
         }
+
+
+
+        static bool IsPalindrome(double km)
+        {
+            string text = km.ToString();
+
+            int left = 0;
+            int right = text.Length - 1;
+
+            while (left < right)
+            {
+                if (text[left] != text[right])
+                    return false;
+
+                left++;
+                right--;
+            }
+
+            return true;
+
+
+        }
+
+        // Metode til at vente på brugerinput
+        static void ReturnToMenu()
+        {
+            Console.Write("\nPress any key to return to menu...");
+            Console.ReadKey();
+        }
+
+
+        static int ReadInt(string message, int min, int max)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                if (int.TryParse(Console.ReadLine(), out int choice) &&
+                    choice >= min &&
+                    choice <= max)
+                    return choice;
+
+                Console.WriteLine($"Invalid choice. Please enter a whole number between {min} and {max}");
+            }
+        }
+
     }
+
+
 }
