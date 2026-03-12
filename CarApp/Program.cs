@@ -9,7 +9,7 @@
 
             Car carAndreas = new Car("Mazda", "3", 2019, FuelType.diesel, "A", 64000, false, 19);
             Car carFiozi = new Car("Toyota", "BZ4x", 2026, FuelType.electric, "A", 200000, false, 15);
-          
+
 
 
             bool running = true;
@@ -38,8 +38,8 @@
                 // Tager brugerens valg og udfører den tilsvarende handling
                 switch (choice)
                 {
-                    case 0:
-                        c
+
+
                     case 1:
                         car1.ReadCarDetails();
                         ReturnToMenu();
