@@ -10,8 +10,22 @@
             Car carAndreas = new Car("Mazda", "3", 2019, FuelType.diesel, "A", 64000, false, 19);
             Car carFiozi = new Car("Toyota", "BZ4x", 2026, FuelType.electric, "A", 200000, false, 15);
 
+            Trip trip1 = new Trip(carAndreas, 100, DateTime.Now, DateTime.Now.AddHours(2));
+            Trip trip2 = new Trip(carAndreas, 50, DateTime.Now, DateTime.Now.AddHours(1));
 
+            carAndreas.ToggleEngine();
+            carAndreas.Drive(trip1);
+            carAndreas.Drive(trip2);
 
+            List<Trip> todaysTrips = carAndreas.GetTripsByDate(DateTime.Today);
+
+            foreach (Trip trip in todaysTrips)
+            {
+                Console.WriteLine($"KM: {trip.Distance}\nStart tid: {trip.StartTime}\nSlut tid: {trip.EndTime}");
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
             bool running = true;
 
             while (running)
@@ -39,7 +53,6 @@
                 switch (choice)
                 {
 
-
                     case 1:
                         car1.ReadCarDetails();
                         ReturnToMenu();
@@ -51,12 +64,12 @@
                     case 3:
                         Console.WriteLine("How many km do you want to drive? ");
                         double distance = Convert.ToDouble(Console.ReadLine());
-                        
+
                         DateTime startTime = DateTime.Now;
                         DateTime endTime = startTime.AddHours(1);
 
                         Trip newTrip = new Trip(car1, distance, startTime, endTime);
-                        
+
                         car1.Drive(newTrip);
                         ReturnToMenu();
                         break;

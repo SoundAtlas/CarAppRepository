@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace CarApp
 {
 
@@ -60,18 +58,18 @@ namespace CarApp
         //Trips
 
         private List<Trip> _trips = new List<Trip>();
-        
+
 
         public List<Trip> GetTrips()
         {
-            return _trips; 
+            return _trips;
         }
 
         //methods
 
         public void ReadCarDetails()
         {
-            Console.Write("Brand: "); 
+            Console.Write("Brand: ");
             CarBrand = Console.ReadLine();
             Console.Write("Model: ");
             CarModel = Console.ReadLine();
@@ -129,8 +127,8 @@ namespace CarApp
             Odometer += newTrip.Distance;
             _trips.Add(newTrip);
 
-            Console.WriteLine($"You drove {newTrip.Distance} km.");
-            Console.WriteLine($"Total milage is now {Odometer}");
+            /* Console.WriteLine($"You drove {newTrip.Distance} km.");
+             Console.WriteLine($"Total milage is now {Odometer}");*/
 
         }
 
@@ -223,14 +221,17 @@ namespace CarApp
         //Filters _trips by date
         public List<Trip> GetTripsByDate(DateTime TripDate)
         {
+            List<Trip> matchingTrips = new List<Trip>();
+
             foreach (Trip trip in _trips)
             {
-                if (trip.TripDate.Date == TripDate)
+
+                if (trip.TripDate.Date == TripDate.Date)
                 {
-                    _trips.Add(trip);
+                    matchingTrips.Add(trip);
                 }
             }
-            return _trips;
+            return matchingTrips;
         }
     }
 }
