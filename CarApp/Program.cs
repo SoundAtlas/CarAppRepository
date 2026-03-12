@@ -51,7 +51,13 @@
                     case 3:
                         Console.WriteLine("How many km do you want to drive? ");
                         double distance = Convert.ToDouble(Console.ReadLine());
-                        car1.Drive(distance);
+                        
+                        DateTime startTime = DateTime.Now;
+                        DateTime endTime = startTime.AddHours(1);
+
+                        Trip newTrip = new Trip(car1, distance, startTime, endTime);
+                        
+                        car1.Drive(newTrip);
                         ReturnToMenu();
                         break;
                     case 4:

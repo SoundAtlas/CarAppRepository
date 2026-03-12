@@ -55,7 +55,15 @@ namespace CarApp
             KmPerLiter = kmPrLiter;
         }
 
+        //Trips
 
+        private List<Trip> _trips = new List<Trip>();
+        
+
+        public List<Trip> GetTrips()
+        {
+            return _trips; 
+        }
 
         //methods
 
@@ -102,7 +110,7 @@ namespace CarApp
 
 
         // Metode til at simulere en køretur
-        public void Drive(double distance)
+        public void Drive(Trip newTrip)
         {
             if (IsEngineOn == false)
             {
@@ -110,24 +118,22 @@ namespace CarApp
                 return;
             }
 
-            if (distance <= 0)
+            if (newTrip.Distance <= 0)
             {
                 Console.WriteLine("Distance must be greater than 0!");
                 return;
             }
 
-            Odometer = Odometer + (int)distance;
+            Odometer += newTrip.Distance;
+            _trips.Add(newTrip);
 
-            Console.WriteLine($"You drove {distance} km.");
+            Console.WriteLine($"You drove {newTrip.Distance} km.");
             Console.WriteLine($"Total milage is now {Odometer}");
 
         }
 
-
-
         public double CalculateTripPrice(double distance)
         {
-
             if (KmPerLiter == 0)
             {
                 Console.WriteLine("Error: type car details first (menu 1).");
@@ -211,9 +217,6 @@ namespace CarApp
 
                 Console.WriteLine("Invalid choice. Please enter a positive number");
             }
-
         }
-
     }
-
 }

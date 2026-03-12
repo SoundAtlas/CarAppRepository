@@ -6,7 +6,7 @@ namespace CarApp
 {
     public class Trip
     {
-        // Atrributes
+        // Attributes
    
         private readonly Car _car;
        
