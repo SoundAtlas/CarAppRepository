@@ -3,4 +3,5 @@
     <File Path=".gitignore" />
   </Folder>
   <Project Path="CarApp/CarApp.csproj" />
+  <Project Path="CarAppUnitTest/CarAppUnitTest.csproj" Id="304feb7c-f80e-4b84-8101-036f910be7bc" />
 </Solution>
