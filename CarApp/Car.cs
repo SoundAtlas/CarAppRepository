@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace CarApp
 {
 
@@ -217,6 +219,18 @@ namespace CarApp
 
                 Console.WriteLine("Invalid choice. Please enter a positive number");
             }
+        }
+        //Filters _trips by date
+        public List<Trip> GetTripsByDate(DateTime TripDate)
+        {
+            foreach (Trip trip in _trips)
+            {
+                if (trip.TripDate.Date == TripDate)
+                {
+                    _trips.Add(trip);
+                }
+            }
+            return _trips;
         }
     }
 }

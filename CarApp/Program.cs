@@ -121,8 +121,6 @@
             }
 
             return true;
-
-
         }
 
         // Metode til at vente på brugerinput
@@ -131,7 +129,6 @@
             Console.Write("\nPress any key to return to menu...");
             Console.ReadKey();
         }
-
 
         static int ReadInt(string message, int min, int max)
         {
@@ -146,8 +143,5 @@
                 Console.WriteLine($"Invalid choice. Please enter a whole number between {min} and {max}");
             }
         }
-
     }
-
-
 }
